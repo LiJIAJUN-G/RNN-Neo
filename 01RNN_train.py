@@ -4,7 +4,7 @@ Created on Mon Nov 27 11:37:17 2023
 
 @author: lijiajun
 """
-
+import os
 import torch
 import numpy as np
 import pandas as pd
@@ -103,7 +103,9 @@ def train_epoch(model, data_loader, loss, updater):
     return ys_train, f_mean(loss_train_list).cpu().detach().numpy(), metrics_train
 
 
-
+if not os.path.isdir('./model_test'):
+	os.mkdir('./model_test')
+    
 def train(model, train_loader, test_loader, loss, num_epochs, updater, cols):    
     metric_best, ep_best = 0, -1
     path_saver = './model_test/RNN_{}_{}.pkl'.format(cols[-3], cols[-2])
