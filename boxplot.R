@@ -1,8 +1,6 @@
 setwd('C:/Users/22927/Desktop/RNN-Neo')
 windowsFonts()
-library(ggpubr)
-library(rstatix)
-library(gtools)
+
 color_list <-c("#DD8047","#ddf0f8","#b6d7ec","#8fbee0","#68a4d4","#418bc8")
 print(color_list)
 
