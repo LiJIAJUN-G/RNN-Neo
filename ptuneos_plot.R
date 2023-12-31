@@ -1,4 +1,4 @@
-setwd('the_path_to/RNN-Neo')
+setwd('C:/Users/22927/Desktop/RNN-Neo')
 windowsFonts()
 
 data <- read.csv('./result/result_pTuneos.csv')
@@ -12,7 +12,7 @@ data$method <- factor(data$method,levels = c("pTuneos","RNN_NB","RNN_voting"))
 
 
 ##
-color_list <-c("#e3e3e3","#68a4d4","#418bc8")
+color_list <-c("#7BA79D","#68a4d4","#418bc8")
 
 
 R_PoD_plot <- function(data){
@@ -30,11 +30,11 @@ R_PoD_plot <- function(data){
           axis.ticks=element_line(color="black",linewidth=0.8),
           axis.text.x = element_text(angle = 30,vjust = 0.68,hjust = 0.65),
           panel.border = element_rect(fill=NA,color="black", linewidth=1, linetype="solid"),
-          legend.position = "none" )+ggtitle('HiTIDE*')+xlab('')+ylab('R-PoD')+
+          legend.position = "none" )+ggtitle('')+xlab('')+ylab(expression("R_PoD"[20]))+
     scale_fill_manual(values =color_list)
   
   
-  ggsave('./fig/ptuneos_R_PoD.png',dpi=1200,p,width = 3, height = 4.5)
+  ggsave('./fig/ptuneos_R_PoD.png',dpi=1200,p,width = 3.8, height = 5)
   p
 }
 R_PoD_plot(data)
@@ -54,11 +54,11 @@ TTIF_plot <- function(data){
           axis.ticks=element_line(color="black",linewidth=0.8),
           axis.text.x = element_text(angle = 30,vjust = 0.68,hjust = 0.65),
           panel.border = element_rect(fill=NA,color="black", linewidth=1, linetype="solid"),
-          legend.position = "none" )+ggtitle('HiTIDE*')+xlab('')+ylab('TTIF')+
+          legend.position = "none" )+ggtitle('')+xlab('')+ylab('TTIF')+
     scale_fill_manual(values =color_list)
   
   
-  ggsave('./fig/ptuneos_TTIF.png',dpi=1200,p,width = 3, height = 4.5)
+  ggsave('./fig/ptuneos_TTIF.png',dpi=1200,p,width = 3.8, height = 5)
   p
 }
 TTIF_plot(data)
@@ -78,11 +78,11 @@ AUPRC_plot <- function(data){
           axis.ticks=element_line(color="black",linewidth=0.8),
           axis.text.x = element_text(angle = 30,vjust = 0.68,hjust = 0.65),
           panel.border = element_rect(fill=NA,color="black", linewidth=1, linetype="solid"),
-          legend.position = "none" )+ggtitle('HiTIDE*')+xlab('')+ylab('AUPRC')+
+          legend.position = "none" )+ggtitle('')+xlab('')+ylab('AUPRC')+
     scale_fill_manual(values =color_list)
   
   
-  ggsave(paste0('./fig/pTuneos_AUPRC.png'),dpi=1200,p,width = 3, height = 4.5)
+  ggsave(paste0('./fig/pTuneos_AUPRC.png'),dpi=1200,p,width = 3.8, height = 5)
   p
 }
 AUPRC_plot(data)
@@ -102,11 +102,11 @@ FR100_plot <- function(data){
           axis.ticks=element_line(color="black",linewidth=0.8),
           axis.text.x = element_text(angle = 30,vjust = 0.68,hjust = 0.65),
           panel.border = element_rect(fill=NA,color="black", linewidth=1, linetype="solid"),
-          legend.position = "none" )+ggtitle('HiTIDE*')+xlab('')+ylab('FR100')+
+          legend.position = "none" )+ggtitle('')+xlab('')+ylab('FR100')+
     scale_fill_manual(values =color_list)
   
   
-  ggsave(paste0('./fig/pTuneos_FR100.png'),dpi=1200,p,width = 3, height = 4.5)
+  ggsave(paste0('./fig/pTuneos_FR100.png'),dpi=1200,p,width = 3.8, height = 5)
   p
 }
 FR100_plot(data)
@@ -120,10 +120,10 @@ data$method <- factor(data$method,levels = c("pTuneos","RNN_NB","RNN_voting"))
 
 
 p <- ggplot(data=data, mapping=aes(x = topn, y = num, fill= method))+
-  geom_bar(stat="identity",position=position_dodge(0.85),width=0.75)+ 
+  geom_bar(stat="identity",position=position_dodge(0.85),width=0.75,color="black")+ 
+  geom_text(aes(label=num),size=4,vjust=-0.5,position=position_dodge(0.85))+
   theme_bw() + theme(panel.grid=element_blank())+
   scale_y_continuous(expand = c(0, 0),limits= c(0,44))+xlab("")+ 
-  geom_hline(yintercept = 40, colour = "red", linetype=2,linewidth=1.5) +
   theme(text = element_text(size = 15,colour = 'black' ,family = "sans"),
         axis.text = element_text(colour = 'black'),
         # axis.text.x = element_text(angle = 45,vjust = 0.60),
@@ -131,10 +131,10 @@ p <- ggplot(data=data, mapping=aes(x = topn, y = num, fill= method))+
         axis.ticks=element_line(color="black",linewidth=0.8),
         panel.border = element_rect(fill=NA,color="black", linewidth=1, linetype="solid"),
         legend.position = "none" )+
-  ggtitle("HiTIDE*")+labs(fill = "")+ylab('NIN')+
+  ggtitle("")+labs(fill = "")+ylab('NIN')+
   scale_fill_manual(values =color_list)
 p
-ggsave('./fig/pTuneos_bar.png',dpi=1200,p,width = 4.5, height = 3.8)
+ggsave('./fig/pTuneos_bar.png',dpi=1200,p,width = 4.1, height = 3.8)
 
 
 

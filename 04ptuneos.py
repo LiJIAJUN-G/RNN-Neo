@@ -56,7 +56,7 @@ def r_pod(x):
     if x:
         x = np.nan_to_num(x, nan=101)
         x = [int(i) for i in x]
-        return((len([j for j in x if j <= 20])+sum([1/(2**j) for j in x if j <= 20]))/20)
+        return((len([j for j in x if j <= 20])+sum([1/j for j in x if j <= 20]))/20)
     else:
         return 0
     

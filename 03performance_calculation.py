@@ -81,7 +81,7 @@ def auprc(x):
         
 def r_pod(x):
     if x:
-        return((len([j for j in x if j <= 20])+sum([1/(2**j) for j in x if j <= 20]))/20)
+        return((len([j for j in x if j <= 20])+sum([1/j for j in x if j <= 20]))/20)
     else:
         return 0
         
